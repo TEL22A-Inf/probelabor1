@@ -15,6 +15,14 @@ package aufgabe2
 
 // Liefert eine Liste mit nur den Elementen, für die p true liefert.
 func (list *LinkedList) Filter(p func(string) bool) *LinkedList {
-	// TODO
-	return nil
+	if list.Empty() {
+		return MakeLinkedList()
+	}
+	filtered := list.Next.Filter(p)
+	if !p(list.Id) {
+		return filtered
+	}
+	result := MakeLinkedList(list.Id)
+	result.Next = filtered
+	return result
 }

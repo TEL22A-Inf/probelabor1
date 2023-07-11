@@ -14,6 +14,8 @@ package aufgabe4
 
 // Liefert true, falls es ein Element mit geradem Wert im Baum gibt.
 func (tree *BinTree) HasEvenElement() bool {
-	// TODO
-	return false
+	if tree.Empty() {
+		return false
+	}
+	return tree.Value%2 == 0 || tree.Left.HasEvenElement() || tree.Right.HasEvenElement()
 }

@@ -20,6 +20,15 @@ package aufgabe3
 
 // Liefert den Wert zum gegebenen Baum-Pfad.
 func (tree *BinTree) GetValue(path string) int {
-	// TODO
-	return 0
+	if tree.Empty() {
+		return -1
+	}
+	if path == "" {
+		return tree.Value
+	}
+	head, tail := path[:1], path[1:]
+	if head == "l" {
+		return tree.Left.GetValue(tail)
+	}
+	return tree.Right.GetValue(tail)
 }

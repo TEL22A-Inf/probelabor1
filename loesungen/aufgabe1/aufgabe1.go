@@ -14,6 +14,14 @@ package aufgabe1
 
 // Liefert die erste Position, an der zwei gleiche Elemente hintereinander stehen.
 func (list *LinkedList) FirstDuplicate() int {
-	// TODO
-	return 0
+	if list.Empty() {
+		return 0
+	}
+	if list.Next.Empty() {
+		return 1
+	}
+	if list.Id == list.Next.Id {
+		return 0
+	}
+	return 1 + list.Next.FirstDuplicate()
 }
